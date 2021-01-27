@@ -1,8 +1,12 @@
 <template>
     <div>
-        <vue-code-highlight language="json">
-          {{ renderResult }}
-        </vue-code-highlight>
+        <div>
+          <vue-code-highlight language="json">
+            {{ renderResult }}
+          </vue-code-highlight>
+        </div>
+        <div>此内容由freemark模板生成, 可用参数如下: </div>
+        <div>首次调用时间: instanceFirstTriggerTime</div>
     </div>
 </template>
 
