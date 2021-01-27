@@ -113,6 +113,7 @@ const cn = {
         'fixDelay': '固定延迟（毫秒）',
         'workflow': '工作流',
         'validateTimeExpression': '校验定时参数',
+        'validateParamsExpression': '校验参数',
         'javaContainer': 'Java（容器）',
         'runHistory': '运行记录',
         'reRun': '重跑',

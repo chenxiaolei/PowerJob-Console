@@ -100,13 +100,20 @@
                         v-model="modifiedJobForm.jobParams"
                     />
                 </el-form-item>
-                <el-form-item :label="$t('message.defaultInstanceParamsExpression')">
-                  <el-input
-                      type="textarea"
-                      :autosize="{ minRows: 1, maxRows: 10}"
-                      v-model="modifiedJobForm.defaultInstanceParamsExpression"
-                  />
-                </el-form-item>
+                <el-row>
+                  <el-col :span="20">
+                    <el-form-item :label="$t('message.defaultInstanceParamsExpression')">
+                      <el-input
+                          type="textarea"
+                          :autosize="{ minRows: 1, maxRows: 10}"
+                          v-model="modifiedJobForm.defaultInstanceParamsExpression"
+                      />
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="4">
+                    <el-button type="text" @click="onClickValidateParamsExpression">{{$t('message.validateParamsExpression')}}</el-button>
+                  </el-col>
+                </el-row>
                 <el-form-item :label="$t('message.scheduleInfo')">
                     <el-row>
                         <el-col :span="8">
@@ -244,14 +251,19 @@
         <el-dialog :visible.sync="timeExpressionValidatorVisible" v-if='timeExpressionValidatorVisible'>
             <TimeExpressionValidator :time-expression="modifiedJobForm.timeExpression" :time-expression-type="modifiedJobForm.timeExpressionType"/>
         </el-dialog>
+
+        <el-dialog :visible.sync="paramsExpressionValidatorVisible" v-if='paramsExpressionValidatorVisible'>
+            <ParamsExpressionValidator :params-expression="modifiedJobForm.defaultInstanceParamsExpression" :is-workflow-info-init-params="false"/>
+        </el-dialog>
     </div>
 </template>
 
 <script>
     import TimeExpressionValidator from "../common/TimeExpressionValidator";
+    import ParamsExpressionValidator from "../common/ParamsExpressionValidator";
     export default {
         name: "JobManager",
-        components: {TimeExpressionValidator},
+        components: {TimeExpressionValidator, ParamsExpressionValidator},
         data() {
             return {
                 modifiedJobFormVisible: false,
@@ -307,7 +319,9 @@
                 // 用户列表
                 userList: [],
                 // 时间表达式校验窗口
-                timeExpressionValidatorVisible: false
+                timeExpressionValidatorVisible: false,
+                // 实例参数模板效验
+                paramsExpressionValidatorVisible: false,
 
             }
         },
@@ -431,6 +445,10 @@
             // 点击校验
             onClickValidateTimeExpression() {
                 this.timeExpressionValidatorVisible = true;
+            },
+            // 点击校验
+            onClickValidateParamsExpression() {
+              this.paramsExpressionValidatorVisible = true;
             }
         },
         mounted() {

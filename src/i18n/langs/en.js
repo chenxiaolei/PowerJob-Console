@@ -110,6 +110,7 @@ const en = {
         'fixDelay': 'Fixed Delay (ms)',
         'workflow': 'Workflow',
         'validateTimeExpression': 'Validate',
+        'validateParamsExpression': 'Validate',
         'javaContainer': 'Java（Container）',
         'runHistory': 'History',
         'reRun': 'Retry',
