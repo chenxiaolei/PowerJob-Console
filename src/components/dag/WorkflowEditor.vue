@@ -19,6 +19,21 @@
                     <el-input v-model="workflowInfo.wfDescription"/>
                 </el-form-item>
 
+              <el-form-item :label="$t('message.defaultInitParamsExpression')">
+                <el-row>
+                  <el-col :span="16">
+                      <el-input
+                          type="textarea"
+                          :autosize="{ minRows: 1, maxRows: 10}"
+                          v-model="workflowInfo.defaultInitParamsExpression"
+                      />
+                  </el-col>
+                  <el-col :span="4">
+                    <el-button type="text" @click="onClickValidateParamsExpression">{{$t('message.validateParamsExpression')}}</el-button>
+                  </el-col>
+                </el-row>
+              </el-form-item>
+
                 <el-form-item :label="$t('message.scheduleInfo')">
                     <el-row>
                         <el-col :span="6">
@@ -115,17 +130,22 @@
         <el-dialog :visible.sync="timeExpressionValidatorVisible" v-if='timeExpressionValidatorVisible'>
             <TimeExpressionValidator :time-expression="workflowInfo.timeExpression" :time-expression-type="workflowInfo.timeExpressionType"/>
         </el-dialog>
+
+        <el-dialog :visible.sync="paramsExpressionValidatorVisible" v-if='paramsExpressionValidatorVisible'>
+            <ParamsExpressionValidator :params-expression="workflowInfo.defaultInitParamsExpression" :is-workflow-info-init-params="true"/>
+        </el-dialog>
     </div>
 </template>
 
 <script>
     import TimeExpressionValidator from "../common/TimeExpressionValidator";
+    import ParamsExpressionValidator from "../common/ParamsExpressionValidator";
     import dagreD3 from "dagre-d3";
     import * as d3 from "d3";
 
     export default {
         name: "WorkflowEditor",
-        components: {TimeExpressionValidator},
+        components: {TimeExpressionValidator, ParamsExpressionValidator},
         data() {
             return {
                 workflowInfo: {
@@ -140,6 +160,7 @@
                     timeExpression: undefined,
                     timeExpressionType: undefined,
                     wfDescription: undefined,
+                    defaultInitParamsExpression: undefined,
                     wfName: undefined
                 },
                 timeExpressionTypeOptions: [{key: "API", label: "API"}, {key: "CRON", label: "CRON"} ],
@@ -165,7 +186,9 @@
                 from: undefined,
 
                 // 时间表达式校验窗口
-                timeExpressionValidatorVisible: false
+                timeExpressionValidatorVisible: false,
+                // 初始化参数模板效验
+                paramsExpressionValidatorVisible: false
             }
         },
         methods: {
@@ -352,8 +375,10 @@
             },
             onClickValidateTimeExpression() {
                 this.timeExpressionValidatorVisible = true;
+            },
+            onClickValidateParamsExpression() {
+                this.paramsExpressionValidatorVisible = true;
             }
-
         },
         mounted() {
 

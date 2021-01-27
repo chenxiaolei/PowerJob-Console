@@ -80,6 +80,7 @@ const cn = {
         'jobDescription': '任务描述',
         'jobParams': '任务参数',
         'defaultInstanceParamsExpression': '实例参数',
+        'defaultInitParamsExpression': '初始化参数',
         'timeExpressionType': '时间表达式类型',
         'timeExpressionPlaceHolder': 'CRON填写CRON表达式，秒级任务填写整数，API无需填写',
         'executeConfig': '执行配置',
