@@ -76,6 +76,7 @@ const en = {
         'newJob': 'New Job',
         'jobDescription': 'JobDescription',
         'jobParams': 'JobParams',
+        'defaultInstanceParamsExpression': 'DefaultInstanceParamsExpression',
         'timeExpressionType': 'TimeExpressionType',
         'timeExpressionPlaceHolder': 'Cron expression or number of millions for fixed_rate/fixed_delay job',
         'executeConfig': 'ExecutionConfig',

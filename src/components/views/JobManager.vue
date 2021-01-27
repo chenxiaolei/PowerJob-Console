@@ -94,7 +94,18 @@
                     <el-input v-model="modifiedJobForm.jobDescription"/>
                 </el-form-item>
                 <el-form-item :label="$t('message.jobParams')">
-                    <el-input v-model="modifiedJobForm.jobParams"/>
+                    <el-input
+                        type="textarea"
+                        :autosize="{ minRows: 1, maxRows: 5}"
+                        v-model="modifiedJobForm.jobParams"
+                    />
+                </el-form-item>
+                <el-form-item :label="$t('message.defaultInstanceParamsExpression')">
+                  <el-input
+                      type="textarea"
+                      :autosize="{ minRows: 1, maxRows: 10}"
+                      v-model="modifiedJobForm.defaultInstanceParamsExpression"
+                  />
                 </el-form-item>
                 <el-form-item :label="$t('message.scheduleInfo')">
                     <el-row>
@@ -251,6 +262,7 @@
                     jobDescription: "",
                     appId: this.$store.state.appInfo.id,
                     jobParams: "",
+                    defaultInstanceParamsExpression: "",
                     timeExpressionType: "",
                     timeExpression: "",
                     executeType: "",
