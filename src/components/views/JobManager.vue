@@ -64,6 +64,9 @@
                                     <el-button size="mini" type="text" @click="onClickRunHistory(scope.row)">{{$t('message.runHistory')}}</el-button>
                                 </el-dropdown-item>
                                 <el-dropdown-item>
+                                  <el-button size="mini" type="text" @click="onClickDuplicate(scope.row)">{{$t('message.duplicate')}}</el-button>
+                                </el-dropdown-item>
+                                <el-dropdown-item>
                                     <el-button size="mini" type="text" @click="onClickDeleteJob(scope.row)">{{$t('message.delete')}}</el-button>
                                 </el-dropdown-item>
                             </el-dropdown-menu>
@@ -300,13 +303,13 @@
                 jobQueryContent: {
                     appId: this.$store.state.appInfo.id,
                     index: 0,
-                    pageSize: 10,
+                    pageSize: 20,
                     jobId: undefined,
                     keyword: undefined
                 },
                 // 任务列表（查询结果），包含index、pageSize、totalPages、totalItems、data（List类型）
                 jobInfoPageResult: {
-                    pageSize: 10,
+                    pageSize: 20,
                     totalItems: 0,
                     data: []
                 },
@@ -402,6 +405,15 @@
                         jobId: data.id,
                     }
                 })
+            },
+            // 点击 复制
+            onClickDuplicate(data) {
+              let that = this;
+              let url = "/job/duplicate?jobId=" + data.id;
+              this.axios.get(url).then(() => {
+                that.$message.success(this.$t('message.success'));
+                that.listJobInfos();
+              });
             },
             // 点击 换页
             onClickChangePage(index) {

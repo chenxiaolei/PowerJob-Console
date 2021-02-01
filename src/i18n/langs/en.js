@@ -114,6 +114,7 @@ const en = {
         'validateParamsExpression': 'Validate',
         'javaContainer': 'Java（Container）',
         'runHistory': 'History',
+        'duplicate': 'duplicate',
         'reRun': 'Retry',
 
         // JobInstance

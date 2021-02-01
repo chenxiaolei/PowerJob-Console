@@ -117,6 +117,7 @@ const cn = {
         'validateParamsExpression': '校验参数',
         'javaContainer': 'Java（容器）',
         'runHistory': '运行记录',
+        'duplicate': '复制',
         'reRun': '重跑',
 
         // 任务实例管理
