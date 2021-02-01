@@ -61,7 +61,7 @@
             </div>
         </el-row>
 
-        <el-dialog :visible.sync="instanceDetailVisible" v-if='instanceDetailVisible'>
+        <el-dialog :visible.sync="instanceDetailVisible" v-if='instanceDetailVisible' :close-on-click-modal="false">
             <InstanceDetail :instance-id="currentInstanceId"/>
         </el-dialog>
     </div>

@@ -127,11 +127,11 @@
             </el-row>
         </el-drawer>
 
-        <el-dialog :visible.sync="timeExpressionValidatorVisible" v-if='timeExpressionValidatorVisible'>
+        <el-dialog :visible.sync="timeExpressionValidatorVisible" v-if='timeExpressionValidatorVisible' :close-on-click-modal="false">
             <TimeExpressionValidator :time-expression="workflowInfo.timeExpression" :time-expression-type="workflowInfo.timeExpressionType"/>
         </el-dialog>
 
-        <el-dialog :visible.sync="paramsExpressionValidatorVisible" v-if='paramsExpressionValidatorVisible'>
+        <el-dialog :visible.sync="paramsExpressionValidatorVisible" v-if='paramsExpressionValidatorVisible' :close-on-click-modal="false">
             <ParamsExpressionValidator :params-expression="workflowInfo.defaultInitParamsExpression" :is-workflow-info-init-params="true"/>
         </el-dialog>
     </div>

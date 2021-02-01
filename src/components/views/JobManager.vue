@@ -84,7 +84,7 @@
         </el-row>
 
 
-        <el-dialog :visible.sync="modifiedJobFormVisible" width="60%">
+        <el-dialog :visible.sync="modifiedJobFormVisible" :close-on-click-modal="false" width="60%" >
             <el-form :model="modifiedJobForm" label-width="120px">
 
                 <el-form-item :label="$t('message.jobName')">
@@ -248,11 +248,11 @@
             </el-form>
         </el-dialog>
 
-        <el-dialog :visible.sync="timeExpressionValidatorVisible" v-if='timeExpressionValidatorVisible'>
+        <el-dialog :visible.sync="timeExpressionValidatorVisible" v-if='timeExpressionValidatorVisible' :close-on-click-modal="false">
             <TimeExpressionValidator :time-expression="modifiedJobForm.timeExpression" :time-expression-type="modifiedJobForm.timeExpressionType"/>
         </el-dialog>
 
-        <el-dialog :visible.sync="paramsExpressionValidatorVisible" v-if='paramsExpressionValidatorVisible'>
+        <el-dialog :visible.sync="paramsExpressionValidatorVisible" v-if='paramsExpressionValidatorVisible' :close-on-click-modal="false">
             <ParamsExpressionValidator :params-expression="modifiedJobForm.defaultInstanceParamsExpression" :is-workflow-info-init-params="false"/>
         </el-dialog>
     </div>

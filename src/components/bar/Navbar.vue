@@ -29,7 +29,7 @@
             </el-dropdown>
 
             <!-- 修改应用信息 -->
-            <el-dialog :visible.sync="changeAppInfoDialogVisible" width="35%" >
+            <el-dialog :visible.sync="changeAppInfoDialogVisible" :close-on-click-modal="false" width="35%" >
                 <el-form :model="appInfo" style="margin:0 5px">
 
                     <el-form-item :label="$t('message.appName')">
