@@ -51,7 +51,7 @@
         </el-row>
         <el-divider content-position="center">{{$t('message.secondlyJobHistory')}}:</el-divider>
         <el-row>
-            <el-table  :data="instanceDetail.subInstanceDetails" style="width: 100%">
+            <el-table  :data="instanceDetail.subInstanceDetails" stripe style="width: 100%">
                 <el-table-column prop="subInstanceId" :label="$t('message.subInstanceId')" width="120"/>
                 <el-table-column prop="startTime" :label="$t('message.startTime')" width="160"/>
                 <el-table-column prop="finishedTime" :label="$t('message.finishedTime')" width="160"/>

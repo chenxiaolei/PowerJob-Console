@@ -30,7 +30,7 @@
 
     <!--第二行，工作流数据表格-->
     <el-row>
-        <el-table :data="workflowPageResult.data" style="width: 100%">
+        <el-table :data="workflowPageResult.data" stripe style="width: 100%">
             <el-table-column prop="id" :label="$t('message.wfId')" width="120"/>
             <el-table-column prop="wfName" :label="$t('message.wfName')"/>
             <el-table-column :label="$t('message.scheduleInfo')" >

@@ -108,7 +108,7 @@
                     </el-form-item>
                 </el-form>
             </el-row>
-            <el-table :data="jobInfoPageResult.data">
+            <el-table :data="jobInfoPageResult.data" stripe>
                 <el-table-column property="id" :label="$t('message.jobId')"/>
                 <el-table-column property="jobName" :label="$t('message.jobName')"/>
                 <el-table-column :label="$t('message.operation')">

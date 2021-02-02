@@ -30,7 +30,7 @@
 
         <!--第二行，任务数据表格-->
         <el-row>
-            <el-table :data="jobInfoPageResult.data" style="width: 100%">
+            <el-table :data="jobInfoPageResult.data" stripe style="width: 100%">
                 <el-table-column prop="id" :label="$t('message.jobId')" width="80"/>
                 <el-table-column prop="jobName" :label="$t('message.jobName')" />
                 <el-table-column :label="$t('message.scheduleInfo')" >

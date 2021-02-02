@@ -46,7 +46,7 @@
 
         <!-- 第三行，表单 -->
         <el-row>
-            <el-table :data="instancePageResult.data" style="width: 100%" :row-class-name="instanceTableRowClassName">
+            <el-table :data="instancePageResult.data" style="width: 100%" stripe :row-class-name="instanceTableRowClassName">
                 <el-table-column prop="jobId" :label="$t('message.jobId')" width="80"/>
                 <el-table-column prop="jobName" :label="$t('message.jobName')"/>
                 <el-table-column v-if="instanceQueryContent.type === 'WORKFLOW'" prop="wfInstanceId" :label="$t('message.wfInstanceId')"/>
