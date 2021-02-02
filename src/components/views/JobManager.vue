@@ -79,11 +79,16 @@
         <!-- 第三行，分页插件 -->
         <el-row>
             <el-pagination
-                    layout="prev, pager, next"
+                    layout="total, prev, pager, next, sizes"
+                    background
+                    style="text-align:right;margin-top:15px"
+                    :hide-on-single-page="false"
                     :total="this.jobInfoPageResult.totalItems"
                     :page-size="this.jobInfoPageResult.pageSize"
+                    :page-sizes="[15, 50, 100, 200]"
+                    @size-change="onChangePageSize"
                     @current-change="onClickChangePage"
-                    :hide-on-single-page="true"/>
+                    />
         </el-row>
 
 
@@ -303,13 +308,13 @@
                 jobQueryContent: {
                     appId: this.$store.state.appInfo.id,
                     index: 0,
-                    pageSize: 20,
+                    pageSize: 15,
                     jobId: undefined,
                     keyword: undefined
                 },
                 // 任务列表（查询结果），包含index、pageSize、totalPages、totalItems、data（List类型）
                 jobInfoPageResult: {
-                    pageSize: 20,
+                    pageSize: 15,
                     totalItems: 0,
                     data: []
                 },
@@ -420,6 +425,10 @@
                 // 后端从0开始，前端从1开始
                 this.jobQueryContent.index = index - 1;
                 this.listJobInfos();
+            },
+            onChangePageSize(val) {
+              this.jobQueryContent.pageSize =  val;
+              this.listInstanceInfos();
             },
             // 点击重置按钮
             onClickReset() {

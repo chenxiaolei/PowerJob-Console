@@ -56,6 +56,7 @@
                         {{fetchStatus(scope.row.status)}}
                     </template>
                 </el-table-column>
+                <el-table-column prop="firstTriggerTime" :label="$t('message.firstTriggerTime')"/>
                 <el-table-column prop="actualTriggerTime" :label="$t('message.triggerTime')"/>
                 <el-table-column prop="finishedTime" :label="$t('message.finishedTime')"/>
 
@@ -75,10 +76,15 @@
         <el-row>
             <el-col :span="24">
                 <el-pagination
+                        background
+                        style="text-align:right;margin-top:15px"
+                        :hide-on-single-page="false"
                         :total="this.instancePageResult.totalItems"
                         :page-size="this.instancePageResult.pageSize"
+                        :page-sizes="[15, 50, 100, 200]"
+                        @size-change="onChangePageSize"
                         @current-change="onClickChangeInstancePage"
-                        layout="prev, pager, next"/>
+                        layout="total, prev, pager, next, sizes"/>
             </el-col>
         </el-row>
 
@@ -127,7 +133,7 @@
                 instanceQueryContent: {
                     appId: this.$store.state.appInfo.id,
                     index: 0,
-                    pageSize: 10,
+                    pageSize: 15,
                     instanceId: undefined,
                     wfInstanceId:undefined,
                     status: "",
@@ -136,7 +142,7 @@
                 },
                 // 实例查询结果
                 instancePageResult: {
-                    pageSize: 10,
+                    pageSize: 15,
                     totalItems: 0,
                     data: []
                 },
@@ -214,6 +220,10 @@
                 // 后端从0开始，前端从1开始
                 this.instanceQueryContent.index = index - 1;
                 this.listInstanceInfos();
+            },
+            onChangePageSize(val) {
+              this.instanceQueryContent.pageSize =  val;
+              this.listInstanceInfos();
             },
             instanceTableRowClassName({row}) {
                 switch (row.status) {

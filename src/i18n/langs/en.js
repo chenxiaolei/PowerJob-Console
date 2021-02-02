@@ -121,6 +121,7 @@ const en = {
         'wfInstanceId': 'WorkflowInstanceId',
         'normalInstance': 'Normal instance',
         'wfInstance': 'Workflow instance',
+        'firstTriggerTime': 'First Trigger time',
         'triggerTime': 'Trigger time',
         'finishedTime': 'Finished time',
         'log': 'Log',

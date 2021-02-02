@@ -125,6 +125,7 @@ const cn = {
         'normalInstance': '普通任务实例',
         'wfInstance': '工作流任务实例',
         'triggerTime': '触发时间',
+        'firstTriggerTime': '首次触发时间',
         'finishedTime': '结束时间',
         'log': '日志',
         'runningTimes': '运行次数',
