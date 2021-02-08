@@ -94,7 +94,7 @@
         height: 100vh;
     }
     .left-container{
-        flex-basis:220px;
+        flex-basis:200px;
         flex-grow: 0;
         flex-shrink: 0;
     }
@@ -103,7 +103,7 @@
         box-sizing: border-box;
         padding: 20px;
         position: absolute;
-        left: 220px;
+        left: 200px;
         right: 0;
         top: 80px;
         bottom: 0;
