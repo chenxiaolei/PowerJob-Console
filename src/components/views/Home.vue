@@ -26,10 +26,10 @@
             <el-col :span="6">
                 <el-card shadow="always">
                     <div>
-                        {{$t('message.omsServerTimezone')}}：{{ systemInfo.timezone }}
+                        {{$t('message.omsServerTimezone')}}：{{ this.$store.state.systemInfo.timezone }}
                     </div>
                     <div>
-                        {{$t('message.omsServerTime')}}：{{ systemInfo.serverTime }}
+                        {{$t('message.omsServerTime')}}：{{ this.$store.state.systemInfo.serverTime }}
                     </div>
                 </el-card>
             </el-col>
@@ -51,7 +51,7 @@
                 <div class="wrap">
                     <div class="grid-content bg-purple">
                         <div class="text mTitle">{{$t('message.totalJobNum')}}</div>
-                        <div class="text mText">{{systemInfo.jobCount}}</div>
+                        <div class="text mText">{{this.$store.state.systemInfo.jobCount}}</div>
                     </div>
                     <i class="el-icon-orange"/>
                 </div>
@@ -60,7 +60,7 @@
                 <div class="wrap">
                     <div class="grid-content bg-purple">
                         <div class="text mTitle">{{$t('message.runningInstanceNum')}}</div>
-                        <div class="text">{{systemInfo.runningInstanceCount}}</div>
+                        <div class="text">{{this.$store.state.systemInfo.runningInstanceCount}}</div>
                     </div>
                     <i class="el-icon-timer"/>
                 </div>
@@ -69,7 +69,7 @@
                 <div class="wrap">
                     <div class="grid-content bg-purple">
                         <div class="text mTitle">{{$t('message.recentFailedInstanceNum')}}</div>
-                        <div class="text">{{systemInfo.failedInstanceCount}}</div>
+                        <div class="text">{{this.$store.state.systemInfo.failedInstanceCount}}</div>
                     </div>
                     <i class="el-icon-bell"/>
                 </div>
@@ -108,13 +108,13 @@
         name: "Home",
         data() {
             return {
-                systemInfo: {
+                /*systemInfo: {
                     jobCount: "N/A",
                     runningInstanceCount: "N/A",
                     failedInstanceCount: "N/A",
                     serverTime: "UNKNOWN",
                     timezone: "UNKNOWN"
-                },
+                },*/
                 activeWorkerCount: "N/A",
                 workerList: []
             }
@@ -137,7 +137,7 @@
                 that.activeWorkerCount = that.workerList.length;
             });
             // 请求 Overview
-            that.axios.get("/system/overview?appId=" + appId).then(res => {
+           /* that.axios.get("/system/overview?appId=" + appId).then(res => {
                 that.systemInfo = res;
 
                 // 对比服务器时间和本地时间，误差超过一定时间弹窗警告
@@ -155,7 +155,7 @@
                 //     });
                 // }
 
-            });
+            });*/
         }
     }
 </script>

@@ -7,6 +7,10 @@
         </div>
 
         <div id="right_content">
+            <div style="margin-right:20px">
+              <el-tag effect="dark" type="" style="margin-right:5px">{{this.$store.state.systemInfo.runningInstanceCount}}</el-tag>
+              <el-tag effect="dark" type="danger">{{this.$store.state.systemInfo.failedInstanceCount}}</el-tag>
+            </div>
 
             <el-dropdown @command="this.common.switchLanguage">
                 <span class="el-dropdown-link">
@@ -71,8 +75,23 @@
                     oldPassword: undefined,
                     password: undefined,
                     password2: undefined
-                }
+                },
+                timer:null, //定时器名称
             }
+        },
+        mounted() {
+          this.getServerOverview()
+          if (this.timer) {
+            clearInterval(this.timer)
+          } else {
+            this.timer = setInterval(() => {
+              setTimeout(()=>this.getServerOverview(), 0)
+            }, 3000)
+          }
+        },
+        beforeDestroy(){
+          clearInterval(this.timer);
+          this.timer = null;
         },
         methods: {
             // 退出当前应用
@@ -98,7 +117,13 @@
                 }else {
                     this.$message.error("the password doesn't match");
                 }
-            }
+            },
+            getServerOverview() {
+              let that = this;
+              that.axios.get("/system/overview?appId=" + that.$store.state.appInfo.id).then(res => {
+                this.$store.commit("updateSystemInfo", res);
+              });
+            },
         }
     }
 </script>
