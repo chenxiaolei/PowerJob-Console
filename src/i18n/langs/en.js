@@ -2,6 +2,8 @@ import enLocale from 'element-ui/lib/locale/lang/en'
 
 const en = {
     message: {
+        'language': "Language",
+        'setting': "Setting",
 
         'save': 'Save',
         'cancel': 'Cancel',

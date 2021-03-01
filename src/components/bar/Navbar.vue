@@ -10,7 +10,7 @@
 
             <el-dropdown @command="this.common.switchLanguage">
                 <span class="el-dropdown-link">
-                    <p style="color:#ffffff">Language<i class="el-icon-arrow-down el-icon--right"/></p>
+                    <p style="color:#ffffff">{{$t('message.language')}}<i class="el-icon-arrow-down el-icon--right"/></p>
                 </span>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item command="en">English</el-dropdown-item>
@@ -20,7 +20,7 @@
 
             <el-dropdown @command="handleSettings">
                 <span class="el-dropdown-link">
-                    <p style="color:#ffffff">Settings<i class="el-icon-arrow-down el-icon--right"/></p>
+                    <p style="color:#ffffff">{{$t('message.setting')}}<i class="el-icon-arrow-down el-icon--right"/></p>
                 </span>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item command="changeAppInfo">{{$t('message.changeAppInfo')}}</el-dropdown-item>

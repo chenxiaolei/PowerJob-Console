@@ -1,7 +1,8 @@
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 const cn = {
     message: {
-
+        'language': "语言",
+        'setting': "设置",
         // common
         'save': '保存',
         'cancel': '取消',
