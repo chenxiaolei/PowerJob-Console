@@ -1,7 +1,7 @@
 <template>
     <div id="navbar">
         <div id="logo_content">
-            <a href="http://www.powerjob.tech/" target="_blank">
+            <a href="http://www.powerjob.tech/" target="_blank" style="pointer-events:none;">
                 <img src="../../assets/powerjob-console-logo.png"  alt="logo"/>
             </a>
         </div>
