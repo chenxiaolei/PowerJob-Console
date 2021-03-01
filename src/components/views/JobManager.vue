@@ -14,7 +14,7 @@
                         <el-input v-model="jobQueryContent.keyword" :placeholder="$t('message.keyword')"/>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="listJobInfos">{{$t('message.query')}}</el-button>
+                        <el-button type="primary" @click="listJobInfosByFirstPage">{{$t('message.query')}}</el-button>
                         <el-button type="cancel" @click="onClickReset">{{$t('message.reset')}}</el-button>
                     </el-form-item>
                 </el-form>
@@ -85,6 +85,7 @@
                     :hide-on-single-page="false"
                     :total="this.jobInfoPageResult.totalItems"
                     :page-size="this.jobInfoPageResult.pageSize"
+                    :current-page="this.jobQueryContent.index+1"
                     :page-sizes="[15, 50, 100, 200]"
                     @size-change="onChangePageSize"
                     @current-change="onClickChangePage"
@@ -345,6 +346,13 @@
                     that.listJobInfos();
 
                 }, () => that.modifiedJobFormVisible = false);
+            },
+            listJobInfosByFirstPage() {
+              const that = this;
+              this.jobQueryContent.index = 0;
+              this.axios.post("/job/list", this.jobQueryContent).then((res) => {
+                that.jobInfoPageResult = res;
+              });
             },
             // 列出符合当前搜索条件的任务
             listJobInfos() {

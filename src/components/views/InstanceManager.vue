@@ -25,7 +25,7 @@
                     </el-form-item>
 
                     <el-form-item>
-                        <el-button type="primary" @click="listInstanceInfos">{{$t('message.query')}}</el-button>
+                        <el-button type="primary" @click="listInstanceInfosByFirstPage">{{$t('message.query')}}</el-button>
                         <el-button type="cancel" @click = "onClickRest">{{$t('message.reset')}}</el-button>
                     </el-form-item>
                 </el-form>
@@ -39,7 +39,7 @@
         </el-row>
 
         <!-- 第二行，切换器 -->
-        <el-tabs type="card" v-model="instanceQueryContent.type" @tab-click="listInstanceInfos">
+        <el-tabs type="card" v-model="instanceQueryContent.type" @tab-click="listInstanceInfosByFirstPage">
             <el-tab-pane :label="$t('message.normalInstance')" name="NORMAL"/>
             <el-tab-pane :label="$t('message.wfInstance')" name="WORKFLOW"/>
         </el-tabs>
@@ -82,6 +82,7 @@
                         :total="this.instancePageResult.totalItems"
                         :page-size="this.instancePageResult.pageSize"
                         :page-sizes="[15, 50, 100, 200]"
+                        :current-page="this.instanceQueryContent.index+1"
                         @size-change="onChangePageSize"
                         @current-change="onClickChangeInstancePage"
                         layout="total, prev, pager, next, sizes"/>
@@ -177,6 +178,13 @@
         },
         methods: {
             // 查询任务实例信息
+            listInstanceInfosByFirstPage() {
+              let that = this;
+              this.instanceQueryContent.index = 0;
+              that.axios.post("/instance/list", that.instanceQueryContent).then(res => {
+                that.instancePageResult = res;
+              });
+            },
             listInstanceInfos() {
                 let that = this;
                 that.axios.post("/instance/list", that.instanceQueryContent).then(res => {
