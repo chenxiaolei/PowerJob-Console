@@ -7,10 +7,10 @@
             <!-- 左侧搜索栏，占地面积 20/24 -->
             <el-col :span="20">
                 <el-form :inline="true" :model="jobQueryContent" class="el-form--inline">
-                    <el-form-item :label="$t('message.jobId')">
+                    <el-form-item>
                         <el-input v-model="jobQueryContent.jobId" :placeholder="$t('message.jobId')"/>
                     </el-form-item>
-                    <el-form-item :label="$t('message.keyword')">
+                    <el-form-item>
                         <el-input v-model="jobQueryContent.keyword" :placeholder="$t('message.keyword')"/>
                     </el-form-item>
                     <el-form-item>

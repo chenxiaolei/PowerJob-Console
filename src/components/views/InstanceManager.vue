@@ -4,16 +4,16 @@
         <el-row>
             <el-col :span="22">
                 <el-form :inline="true" :model="instanceQueryContent" class="el-form--inline">
-                    <el-form-item :label="$t('message.jobId')">
+                    <el-form-item >
                         <el-input v-model="instanceQueryContent.jobId" :placeholder="$t('message.jobId')"/>
                     </el-form-item>
-                    <el-form-item :label="$t('message.instanceId')">
+                    <el-form-item>
                         <el-input v-model="instanceQueryContent.instanceId" :placeholder="$t('message.instanceId')"/>
                     </el-form-item>
                     <el-form-item  v-if="instanceQueryContent.type === 'WORKFLOW'" :label="$t('message.wfInstanceId')">
                         <el-input v-model="instanceQueryContent.wfInstanceId" :placeholder="$t('message.wfInstanceId')"/>
                     </el-form-item>
-                    <el-form-item :label="$t('message.status')">
+                    <el-form-item>
                         <el-select v-model="instanceQueryContent.status" :placeholder="$t('message.status')">
                             <el-option
                                     v-for="item in instanceStatusOptions"
@@ -277,6 +277,9 @@
             // 读取传递的参数
             let jobId = this.$route.params.jobId;
             let status = this.$route.params.status;
+
+            console.log(status+" come");
+            console.log(status+" 112233");
             if (jobId !== undefined) {
                 this.instanceQueryContent.jobId = jobId;
             }

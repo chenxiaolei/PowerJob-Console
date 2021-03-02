@@ -125,6 +125,7 @@
               });
             },
             onClickGotoFailInstanceHistory() {
+              console.log("FAILED goto");
               this.$router.push({
                 name: 'instanceManager',
                 params: {
