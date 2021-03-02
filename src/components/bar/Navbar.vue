@@ -9,7 +9,7 @@
         <div id="right_content">
             <div style="margin-right:20px">
               <el-tag effect="dark" type="" style="margin-right:5px">{{this.$store.state.systemInfo.runningInstanceCount}}</el-tag>
-              <el-tag effect="dark" type="danger">{{this.$store.state.systemInfo.failedInstanceCount}}</el-tag>
+              <el-tag effect="dark" type="danger" style="cursor: pointer" @click="onClickGotoFailInstanceHistory()">{{this.$store.state.systemInfo.failedInstanceCount}}</el-tag>
             </div>
 
             <el-dropdown @command="this.common.switchLanguage">
@@ -123,6 +123,14 @@
               that.axios.get("/system/overview?appId=" + that.$store.state.appInfo.id).then(res => {
                 this.$store.commit("updateSystemInfo", res);
               });
+            },
+            onClickGotoFailInstanceHistory() {
+              this.$router.push({
+                name: 'instanceManager',
+                params: {
+                  status: "FAILED",
+                }
+              })
             },
         }
     }

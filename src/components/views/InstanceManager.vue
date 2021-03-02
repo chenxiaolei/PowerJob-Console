@@ -276,8 +276,12 @@
         mounted() {
             // 读取传递的参数
             let jobId = this.$route.params.jobId;
+            let status = this.$route.params.status;
             if (jobId !== undefined) {
                 this.instanceQueryContent.jobId = jobId;
+            }
+            if (status !== undefined) {
+              this.instanceQueryContent.status = status;
             }
 
             this.listInstanceInfos();
